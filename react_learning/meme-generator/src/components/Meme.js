@@ -2,6 +2,10 @@ import { useState } from "react"
 import mems from '../data/memsData'
 export default function Meme() {
     let [memImgUrl, setmemImgUrl] = useState('')
+    const [textInfo, setTextInfo] = useState({
+        topText: 'hi',
+        bottomText: ''
+    })
     //let [isGoingOut, setIsGoingOut] = useState(true)
     // let [items, setItems] = useState(['item 1', 'item 2'])
     //    const [contact, setContact] = useState({
@@ -16,16 +20,16 @@ export default function Meme() {
         bottomText: '',
         randomImage: 'http://i.imgflip.com/1bij.jpg'
     })
-    const [allMemeImages,setAllMemeImages]=useState(mems)
+    const [allMemeImages, setAllMemeImages] = useState(mems)
     function getNewImage() {
         const memsArray = allMemeImages.data.memes
         const rnd = Math.floor(Math.random() * memsArray.length)
         const url = memsArray[rnd].url
-        setMeme(prevMeme=>({
+        setMeme(prevMeme => ({
             ...prevMeme,
-            randomImage:url
+            randomImage: url
         }))
-        
+
     }
     // function changeState(){
     //     setContact(preContact=>{
@@ -46,7 +50,9 @@ export default function Meme() {
     //         <p>{item}</p>
     //     )
     // })
-
+    function handleChange() {
+        setTextInfo()
+    }
     return (
         <main className="w-[500px] mt-[36px]">
             {/* {isGoingOut ? "true" : "false"} */}
@@ -55,14 +61,20 @@ export default function Meme() {
             {memImgUrl}
             <div className="grid grid-cols-2 gap-4">
                 <input
+                    name="topText"
                     type="text"
                     placeholder="Top text"
                     className="  border-2 rounded-md py-2 indent-2 outline-none"
+                    value={textInfo.topText}
+                    onChange={handleChange}
                 />
                 <input
+                    name="bottomText"
                     type="text"
                     placeholder="Bottom text"
                     className=" border-2 rounded-md py-2 indent-2 outline-none"
+                    value={textInfo.bottomText}
+                    onChange={handleChange}
                 />
                 <button
                     className="cursor-pointer 
