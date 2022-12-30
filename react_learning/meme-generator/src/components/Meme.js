@@ -67,7 +67,6 @@ export default function Meme() {
             return {
                 ...prevMem,
                 [name]: value
-
             }
         })
     }
