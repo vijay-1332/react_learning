@@ -6,7 +6,9 @@
 //import MainSignUP from "./components/signup_form/Index";
 //import UseEffect from "./components/UesEffect/Index";
 //import WindowTracker from "./components/windowTracker/WindowTracker";
-import MarkDownNotes from "./components/Markdown_notesApp/MarkDownNotesApp";
+//import MarkDownNotes from "./components/Markdown_notesApp/MarkDownNotesApp";
+// import TenziesMain from "./components/tenzies/TenziesMain";
+import Quizzucal from "./components/quizzical/Quizzucal";
 function App() {
   return (
     <div>
@@ -18,7 +20,9 @@ function App() {
      {/* <MainSignUP></MainSignUP> */}
      {/* <UseEffect/> */}
      {/* <WindowTracker/> */}
-     <MarkDownNotes/>
+     {/* <MarkDownNotes/> */}
+     {/* <TenziesMain/> */}
+     <Quizzucal/>
     </div>
   );
 }
