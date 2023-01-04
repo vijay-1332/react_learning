@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { nanoid } from "nanoid"
+import { FaPowerOff } from 'react-icons/fa';
 import LandingPage from './LandingPage'
 import Button from "./core/Button"
 import Question from "./Question"
@@ -7,9 +8,11 @@ import Option from "./core/Option"
 export default function Quizzucal() {
     const [questions, setQuestions] = useState(() => JSON.parse(localStorage.getItem('queSet')) || [])
     const [isAnsLocked, setIsAnsLocked] = useState(false)
+    const [testCategory, setTestCategory] = useState('any')
+    const [testDifficulty, setTestDifficulty] = useState('any')
     const [scoreObtain, setScoreObtain] = useState(0)
     async function getAllQuestions() {
-        const res = await fetch('https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple')
+        const res = await fetch(`https://opentdb.com/api.php?amount=5&category=${testCategory}&difficulty=${testDifficulty}&type=multiple`)
         const data = await res.json()
         console.log(data.results)
         const ques = data.results.map((res) => {
@@ -40,7 +43,7 @@ export default function Quizzucal() {
                 <div className="flex overflow-x-auto scroll-p-2 mt-2">
                     {question.opts && question.opts.map((opt) => {
                         return (
-                            <Option key={opt.optId} isAnsLocked={isAnsLocked} ans={question.answered} option={opt.val} handleClick={() => saveAnswer(question.qId, opt)} />
+                            <Option key={opt.optId} isAnsLocked={isAnsLocked} correctAns={question.correct_ans} ans={question.answered} option={opt.val} handleClick={() => saveAnswer(question.qId, opt)} />
                         )
                     })}
                 </div>
@@ -49,16 +52,6 @@ export default function Quizzucal() {
 
         )
     })
-    // function updateQuestionObj(oldQue, objOpt) {
-    //     let isMatched = false
-    //     for (let i = 0; i < oldQue.opts.length; i++) {
-    //         console.log(oldQue.opts[i].optId + '---' + objOpt.optId)
-    //         if (oldQue.opts[i].optId === objOpt.optId) {
-    //             isMatched = true
-    //         }
-    //     }
-    //     return isMatched
-    // }
     function saveAnswer(questionId, objOpt) {
         console.log(questionId)
         console.log(objOpt)
@@ -93,7 +86,20 @@ export default function Quizzucal() {
         setScoreObtain(0)
         getAllQuestions()
     }
-
+    function quitTest() {
+        setIsAnsLocked(false)
+        setScoreObtain(0)
+        setQuestions([])
+        setTestCategory('any')
+        setTestDifficulty('any')
+        localStorage.removeItem("queSet")
+    }
+    function handleTestCategoryChange(categoryId) {
+        setTestCategory(categoryId)
+    }
+    function handleTesDificultyChange(difficultyVal) {
+        setTestDifficulty(difficultyVal)
+    }
     function shuffle(array) {
         let currentIndex = array.length, randomIndex;
 
@@ -126,6 +132,7 @@ export default function Quizzucal() {
                         ">
 
                 {questions.length > 0 ? <div>
+                    <button className="absolute right-4 top-4 bg-[#4D5B9E] text-white p-2 cursor-pointer" onClick={quitTest}><FaPowerOff /></button>
                     {questionsElement}
                     <div className="flex items-center justify-center">
                         {isAnsLocked ? <div className="flex items-center justify-center">
@@ -134,7 +141,13 @@ export default function Quizzucal() {
                         </div> : <Button value="lock test" handleClick={lockResult} />
                         }
                     </div>
-                </div> : <LandingPage startQuiz={resetTest}/>}
+                </div> : <LandingPage
+                    startQuiz={resetTest}
+                    testCategory={testCategory}
+                    testDifficulty={testDifficulty}
+                    handleCategoryChange={handleTestCategoryChange}
+                    handleDificultyChange={handleTesDificultyChange}
+                />}
 
             </div>
         </div>

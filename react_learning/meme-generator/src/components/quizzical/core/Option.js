@@ -1,4 +1,26 @@
+import { useState, useEffect } from 'react'
 export default function Option(props) {
+    const [highlightAns, setHighlightAns] = useState("bg-transparent]")
+    useEffect(() => {
+        setHighlightAns(() => {
+            if (props.isAnsLocked) {
+                if ((props.option === props.correctAns)) {
+                    return "bg-[#94D7A2]"
+                } else {
+                    if(props.ans === props.option){
+                        return "bg-[#F8BCBC]"
+                    }
+                }
+            } else {
+                if (props.ans === props.option) {
+                    return "bg-[#D6DBF5]"
+                } else {
+                    return "bg-bg-transparent"
+                }
+            }
+
+        })
+    }, [props.isAnsLocked, props.ans, props.correctAns, props.option])
     return (
         <div>
             <button
@@ -15,7 +37,7 @@ export default function Option(props) {
             border 
             border-[#4D5B9E] 
             hover:border-transparent 
-            rounded-lg ${(props.ans === props.option)?"bg-[#D6DBF5]":"bg-transparent"}` }
+            rounded-lg ${highlightAns}`}
                 onClick={props.handleClick}
             >{props.option}</button>
         </div>
