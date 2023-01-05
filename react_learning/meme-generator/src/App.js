@@ -1,4 +1,5 @@
-import AirBnb from './components/airbnb/AirBnb'
+/**functional component start ##############*/
+//import AirBnb from './components/airbnb/AirBnb'
 // import TravelJournal from './components/travel_journal/TravelJournal'
 //import MemGenerator from "./components/MemGenerator";
 //import Home from "./components/counter/home";
@@ -11,10 +12,17 @@ import AirBnb from './components/airbnb/AirBnb'
 //import MarkDownNotes from "./components/Markdown_notesApp/MarkDownNotesApp";
 // import TenziesMain from "./components/tenzies/TenziesMain";
 // import Quizzucal from "./components/quizzical/Quizzucal";
+/**functional component end################## */
+/**class component  start #######################*/
+//import HelloWorld from './components/class-component/hello-world/HelloWorld'
+//import Greetings from "./components/class-component/Greetings.js/Greetings";
+// import StateMngt from "./components/class-component/StateDemo.js/StateMngt";
+// import CounterMain from "./components/class-component/counter/CounterMain";
+import Form from "./components/class-component/Form/Form";
 function App() {
   return (
     <div>
-      <AirBnb/>
+      {/* <AirBnb/> */}
       {/* <TravelJournal/> */}
       {/* <Home/> */}
      {/* <MemGenerator/> */}
@@ -27,6 +35,11 @@ function App() {
      {/* <MarkDownNotes/> */}
      {/* <TenziesMain/> */}
       {/* <Quizzucal/> */}
+      {/* <HelloWorld/> */}
+      {/* <Greetings/> */}
+      {/* <StateMngt/> */}
+      {/* <CounterMain/> */}
+      <Form/>
     </div>
   );
 }
