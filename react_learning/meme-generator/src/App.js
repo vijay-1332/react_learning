@@ -1,3 +1,5 @@
+import AirBnb from './components/airbnb/AirBnb'
+// import TravelJournal from './components/travel_journal/TravelJournal'
 //import MemGenerator from "./components/MemGenerator";
 //import Home from "./components/counter/home";
 //import Main from "./components/box/Main";
@@ -8,10 +10,12 @@
 //import WindowTracker from "./components/windowTracker/WindowTracker";
 //import MarkDownNotes from "./components/Markdown_notesApp/MarkDownNotesApp";
 // import TenziesMain from "./components/tenzies/TenziesMain";
-import Quizzucal from "./components/quizzical/Quizzucal";
+// import Quizzucal from "./components/quizzical/Quizzucal";
 function App() {
   return (
     <div>
+      <AirBnb/>
+      {/* <TravelJournal/> */}
       {/* <Home/> */}
      {/* <MemGenerator/> */}
      {/* <Main darkMode={true}/> */}
@@ -22,7 +26,7 @@ function App() {
      {/* <WindowTracker/> */}
      {/* <MarkDownNotes/> */}
      {/* <TenziesMain/> */}
-     <Quizzucal/>
+      {/* <Quizzucal/> */}
     </div>
   );
 }
