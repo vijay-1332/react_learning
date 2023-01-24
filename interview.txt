@@ -21,3 +21,8 @@
 - Second paramter to the useEffect function
 - A way for React to know whether it should re-run the effect function
 
+
+Forwerding ref work with only class component but not with function component
+
+contexType having two limitaions 1: It work with class component(consumer component) 2. It can subscribe only one value if multiple subscriber is there than we need to use class component
+
