@@ -2,7 +2,7 @@ export default function Hero() {
     return (
         <section className='flex flex-col p-5 space-y-5 '>
             <div className='flex justify-center'>
-            <img alt="grid" src='Group.png' className="max-w-md items-center"></img>
+            <img alt="grid" src='/Group.png' className="max-w-md items-center"></img>
             </div>
             
             <h1 className='text-4xl font-bold text-left'>Online Experiences</h1>

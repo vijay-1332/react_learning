@@ -1,7 +1,7 @@
 const boxes= [
     {
         id: 1,
-        on: true
+        on: false
     },   
     {
         id: 2,

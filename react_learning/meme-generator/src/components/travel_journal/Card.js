@@ -1,10 +1,10 @@
 export default function Card(props){
     return(
         <div className="flex">
-            <img alt="location" src={`travel_journal/${props.image}`} className="h-[168px] w-[125px]"></img>
+            <img alt="location" src={`/travel_journal/${props.image}`} className="h-[168px] w-[125px]"></img>
             <div className="flex flex-col ml-5">
             <div className="flex items-center mt-4">
-                <img alt="map-icon" src="travel_journal/map-pin.png" className="h-[10px] w-[7px] mr-1"></img>
+                <img alt="map-icon" src="/travel_journal/map-pin.png" className="h-[10px] w-[7px] mr-1"></img>
                 <span className="text-[10px] mr-3 text-gray-400">{props.location}</span>
                 <span className="text-[10px] text-gray-400 underline">View on Google Map</span>
             </div>

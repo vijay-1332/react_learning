@@ -144,14 +144,15 @@ export default function Meme() {
                     onClick={changeState}
                 >change state</button> */}
             </div>
-            <div className="p-4">
-                <h1 className="text-center  text-4xl break-normal  w-[50px]">{meme.topText} </h1>
-            </div>
+            
             <div className="mt-4 relative">
+            <div className="absolute left-[0%] top-[0%] p-4">
+                <h1 className="text-center  text-4xl break-normal text-white  w-full overflow-hidden">{meme.topText} </h1>
+            </div>
                 <img alt="memes" src={meme.randomImage} className='h-[268px] w-[477px]'></img>
 
                 <div className="absolute left-[0%] bottom-[0%] p-4">
-                    <h1 className="break-normal  text-4xl text-white">{meme.bottomText} </h1>
+                    <h1 className="break-normal  text-4xl text-white w-full overflow-hidden">{meme.bottomText} </h1>
                 </div>
 
             </div>

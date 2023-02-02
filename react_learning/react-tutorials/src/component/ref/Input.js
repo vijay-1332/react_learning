@@ -10,6 +10,5 @@ export default class Input extends Component{
             <input ref={this.inputRef} />
         )
     }
-    
-    
+     
 }

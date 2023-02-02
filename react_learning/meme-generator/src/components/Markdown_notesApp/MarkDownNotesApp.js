@@ -5,8 +5,9 @@ import Split from 'react-split'
 import { nanoid } from 'nanoid'
 export default function MarkDownNotes() {
     const [notes, setNotes] = useState(() => JSON.parse(localStorage.getItem('notes')) || [])
+    const [displayNotes, setDisplayNotes] = useState((notes.length > 0 && notes) || [])
     const [currentNoteId, setCurrentNoteId] = useState((notes.length > 0 && notes[0].id) || "")
-
+    // const [test,setTest]=useState(()=>console.log('test')) 
     useEffect(() => {
         localStorage.setItem("notes", JSON.stringify(notes))
     }, [notes])
@@ -18,29 +19,32 @@ export default function MarkDownNotes() {
             body: '# write your title here'
         }
         setNotes(prevNotes => [newNotes, ...prevNotes])
+        displayNoteList()
         setCurrentNoteId(newNotes.id)
         console.log(currentNoteId)
     }
-
+    function displayNoteList() {
+        setDisplayNotes([...notes])
+    }
     function updateNote(text) {
-    //not arrage updated note at top position
+        //not arrage updated note at top position
         //setNotes(oldNotes => oldNotes.map(oldNote => oldNote.id === currentNoteId ? { ...oldNote, body: text } : oldNote))
-    //imperative ways
-        const newNotes=[]
-        for(let i=0; i<notes.length;i++){
-          if(notes[i].id===currentNoteId){
-            notes[i] = {...notes[i],body:text}
-            newNotes.unshift(notes[i])
-          }else{
-            newNotes.push(notes[i])
-          }
+        //imperative ways
+        const newNotes = []
+        for (let i = 0; i < notes.length; i++) {
+            if (notes[i].id === currentNoteId) {
+                notes[i] = { ...notes[i], body: text }
+                newNotes.unshift(notes[i])
+            } else {
+                newNotes.push(notes[i])
+            }
         }
         setNotes(newNotes)
-   
+        searchText()
     }
     function delNote(event, noteId) {
         event.stopPropagation()
-       setNotes(oldNotes=>oldNotes.filter(oldNote=>oldNote.id !== noteId))
+        setNotes(oldNotes => oldNotes.filter(oldNote => oldNote.id !== noteId))
     }
     function findCurrentNode() {
         return notes.find(note => note.id === currentNoteId) || notes[0]
@@ -49,16 +53,37 @@ export default function MarkDownNotes() {
         localStorage.getItem('notes') && localStorage.removeItem("notes");
         setNotes([])
     }
+    function searchText(e){
+       console.log(e.timeStamp)
+            const searchText= e.target.value
+            console.log(searchText)
+              if(searchText){
+                  setDisplayNotes(prevNotes => {
+                      return prevNotes.filter((note) => {
+                          return note.body.includes(searchText)
+                      })
+                  })
+              }else{
+                  setDisplayNotes(notes)
+              }   
+    }
+    const onSearch = debounce((e)=>searchText(e))
+    function debounce (fn,timeout=1000){
+        let timer;
+        return (...args) => {
+          clearTimeout(timer);
+          timer = setTimeout(() => { fn.apply(this, args); }, timeout);
+        };
+      }
     return (
-        <main className="">
+        <main className="w-full">
             {notes.length > 0 ?
                 <Split
                     sizes={[30, 70]}
-                    minSize={100}
                     direction="horizontal"
-                    className="flex w-screen h-screen  bg-gray-200"
+                    className="flex w-full h-screen  bg-gray-200"
                 >
-                    <SideBar notes={notes}
+                    <SideBar notes={displayNotes} onSearch={onSearch}
                         createNewNote={createNewNote}
                         setCurrentNoteId={setCurrentNoteId}
                         flashLocalStorage={flashLocalStorage}

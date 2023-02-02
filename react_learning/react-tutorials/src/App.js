@@ -4,7 +4,12 @@
 //import HocDemo from "./component/HOC/HocDemo";
 //import PropsRender from "./component/propsRender/PropsRenderDemo";
 //import ContextApi from "./component/contextAPI/ContextApi";
-import  SingleVal  from "./component/reducer/SingleVal";
+//import  SingleVal  from "./component/reducer/SingleVal";
+//import ComplexVal from "./component/reducer/ComplexVal";
+//import MultipleReducer from "./component/reducer/MultipleReducer";
+//import ReducerContext from "./component/reducer-context/ReducerContextDemo";
+//import UseCallBack from "./component/usecallback/UseCallBack";
+import UseRefDemo from "./component/useRef/UseRefDemo";
 function App() {
   return (
     <div className="">
@@ -14,7 +19,12 @@ function App() {
         {/* <HocDemo/> */}
         {/* <PropsRender/> */}
         {/* <ContextApi/> */}
-        <SingleVal/>
+        {/* <SingleVal/> */}
+        {/* <ComplexVal/> */}
+        {/* <MultipleReducer/> */}
+        {/* <ReducerContext/> */}
+        {/* <UseCallBack/> */}
+        <UseRefDemo/>
     </div>
   );
 }

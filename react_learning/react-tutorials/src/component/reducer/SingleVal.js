@@ -1,19 +1,18 @@
 import { useReducer } from "react"
-
-export default function SingleVal(){
-    const initialState=0
-    const reducer=(state,action)=>{
-     switch (action){
-        case 'increment':
-            return state+1
-        case 'decrement':
-            return state-1
-        case 'reset':
-            return state=initialState 
-        default:
-        return state
-     }
-    }
+const initialState=0
+const reducer=(state,action)=>{
+ switch (action){
+    case 'increment':
+        return state+1
+    case 'decrement':
+        return state-1
+    case 'reset':
+        return state=initialState 
+    default:
+    return state
+ }
+}
+function SingleVal(){
     const [count,dispatch]=useReducer(reducer,initialState)
     return(
         <div><div>counter: {count}</div>
@@ -23,3 +22,4 @@ export default function SingleVal(){
         </div>
     )
 }
+export default SingleVal
