@@ -27,6 +27,7 @@ import Form from "../components/class-component/Form/Form";
 import Admin from "../components/layouts/Admin";
 import Default from "../components/layouts/Default";
 import ProtectedRoute from "../components/auth/ProtectedRoute";
+import  ReduxThunk  from "../components/redux-thunk/ReduxThunk";
 // const router = createBrowserRouter([
 //     {
 //       path: "/",
@@ -125,6 +126,7 @@ const adminRoutes = createBrowserRouter(
         <Route path="Quizz" element={<Quizzucal />}></Route>
         <Route path="class-counter" element={<CounterMain />}></Route>
         <Route path="class-form" element={<Form />}></Route>
+        <Route path="redux-thunk" element={<ReduxThunk/>}></Route>
       </Route>
     </Route>
 

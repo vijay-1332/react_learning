@@ -17,7 +17,7 @@ export default function SideBar() {
         { 'text': 'Tenzies', 'url': 'Tenzies' },
         { 'text': 'class counter', 'url': 'class-counter' },
         { 'text': 'class form', 'url': 'class-form' },
-
+        { 'text': 'Redux Thunk', 'url': 'redux-thunk' },
     ]
     const elements = menus.map((menu, index) => {
         return (
